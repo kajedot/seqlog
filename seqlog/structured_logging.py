@@ -152,7 +152,7 @@ class StructuredLogRecord(logging.LogRecord):
         # See https://docs.python.org/3/library/logging.html#logging.LogRecord.getMessage for details
         if not isinstance(self.msg, str):
             self.msg = str(self.msg)
-        
+
         if self.args:
             return self.msg % self.args
         elif self.log_props:
@@ -326,7 +326,7 @@ def best_effort_json_encode(arg):
         return arg
 
     try:
-        return json.dumps(arg)
+        json.dumps(arg)
     except TypeError:
         try:
             return str(arg)
@@ -337,6 +337,8 @@ def best_effort_json_encode(arg):
                 return '<type %s>' % (type(arg), )
     except ReferenceError:
         return '<gone weak reference>'
+    else:
+        return arg
 
 
 class SeqLogHandler(logging.Handler):
