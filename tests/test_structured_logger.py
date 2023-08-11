@@ -118,16 +118,16 @@ class TestStructuredLogger(object):
 
         logger.info("Arg1 = '{Argument1}', Arg2 = '{Argument2}', Arg3 = {Argument3}, "
                     "Arg4 = {Argument4}, Arg5 = {Argument5}",
-            Argument1="Foo",
-            Argument2="Bar",
-            Argument3=b"Baz",
-            Argument4=7,
-            Argument5={"Key1": 1, "Array": [{"InArrayNum1": 111, "InArrayStr1": "str1"}]}
-        )
+                    Argument1="Foo",
+                    Argument2="Bar",
+                    Argument3=b"Baz",
+                    Argument4=7,
+                    Argument5={"Key1": 1, "Array": [{"InArrayNum1": 111, "InArrayStr1": "str1"}]})
 
         record = handler.pop_record()
-        expect.log_named_args(record, Argument1="Foo", Argument2="Bar", Argument3=b"Baz", Argument4=7, Argument5=
-                              {"Key1": 1, "Array": [{"InArrayNum1": 111, "InArrayStr1": "str1"}]}, LoggerName="test")
+        expect.log_named_args(record, Argument1="Foo", Argument2="Bar", Argument3=b"Baz", Argument4=7,
+                              Argument5={"Key1": 1, "Array": [{"InArrayNum1": 111, "InArrayStr1": "str1"}]},
+                              LoggerName="test")
 
 
 def create_logger(level=logging.INFO):
